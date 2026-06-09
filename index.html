@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>missile_mgr | Gaming Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      background-color: #050507;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px 0 20px;
+      position: relative;
+    }
+
+    /* ==== Animated RGB Glowing Background ==== */
+    .glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(220px);
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      background: radial-gradient(circle at center, #ff00ff, transparent 70%);
+      animation: hueShift 20s linear infinite, pulse 8s ease-in-out infinite alternate;
+    }
+
+    .glow.one {
+      top: -150px;
+      left: -150px;
+    }
+
+    .glow.two {
+      bottom: -200px;
+      right: -150px;
+      animation-delay: 4s;
+    }
+
+    @keyframes hueShift {
+      0% { filter: hue-rotate(0deg) blur(220px); }
+      100% { filter: hue-rotate(360deg) blur(220px); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.4; }
+      100% { transform: scale(1.15); opacity: 0.6; }
+    }
+
+    /* ==== Content ==== */
+    * {
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+    }
+
+    .profile-img {
+      width: 220px;
+      max-width: 80%;
+      height: auto;
+      margin-top: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.08);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-top: 20px;
+    }
+
+    p.bio {
+      font-size: 1rem;
+      color: #ccc;
+      margin: 10px 0 30px 0;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    /* ==== Link Buttons ==== */
+    .link-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link img {
+      height: 22px;
+      width: 22px;
+      position: absolute;
+      left: 15px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      object-fit: contain;
+    }
+
+    .link span {
+      margin: 0 auto;
+      text-align: center;
+      z-index: 2;
+    }
+
+    /* ==== Shimmer Effect on Hover ==== */
+    .link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: skewX(-25deg);
+      transition: 0.5s;
+    }
+
+    .link:hover::before {
+      left: 125%;
+      transition: left 0.8s ease-in-out;
+    }
+
+    /* ==== Accent Hover Colors ==== */
+    .link.twitch:hover { background: rgba(145, 70, 255, 0.15); border-color: rgba(145, 70, 255, 0.4); }
+    .link.youtube:hover { background: rgba(255, 0, 0, 0.15); border-color: rgba(255, 0, 0, 0.4); }
+    .link.tiktok:hover { background: rgba(0, 242, 234, 0.15); border-color: rgba(0, 242, 234, 0.3); }
+    .link.instagram:hover { background: rgba(255, 64, 129, 0.15); border-color: rgba(255, 64, 129, 0.3); }
+    .link.discord:hover { background: rgba(88, 101, 242, 0.15); border-color: rgba(88, 101, 242, 0.4); }
+    .link.tip:hover { background: rgba(255, 215, 0, 0.15); border-color: rgba(255, 215, 0, 0.3); }
+
+   
+
+    /* ==== Footer ==== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+      font-size: 0.8rem;
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 60px;
+    }
+
+    @media (max-width: 500px) {
+      .profile-img { width: 110px; }
+      h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  
+  
+
+  <!-- Background glows -->
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <!-- Profile and Links -->
+  <img src ="Img.png" alt="Profile" class="profile-img" />
+  <h1>Missile_Mgr</h1>
+  <p class="bio">🎮 Just a random dude who enjoys gaming, streaming, and chaos. 👾</p>
+
+  <div class="link-container">
+    <a class="link twitch" href="https://twitch.tv/missile_mgr" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111668.png" alt="Twitch" />
+      <span>Twitch</span>
+    </a>
+    <a class="link youtube" href="https://youtube.com/@missile_mgr" target="_blank">
+      <img src="https://img.icons8.com/?size=100&id=37325&format=png&color=FFFFFF" alt="YouTube" />
+      <span>YouTube</span>
+    </a>
+    <a class="link tiktok" href="https://tiktok.com/@missile_mgr" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok" />
+      <span>TikTok</span>
+    </a>
+    <a class="link instagram" href="https://instagram.com/gaurav_rana_mgr" target="_blank">
+      <img src="https://img.icons8.com/?size=100&id=85154&format=png&color=FFFFFF" alt="Instagram" />
+      <span>Instagram</span>
+    </a>
+    <a class="link discord" href="https://discord.gg/CbNgrFtRpH" target="_blank">
+      <img src="https://img.icons8.com/?size=100&id=25627&format=png&color=FFFFFF" alt="Discord" />
+      <span>Discord</span>
+    </a>
+    <a class="link tip" href="https://streamelements.com/missile_mgr-7f399/tip" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png" alt="Tip" />
+      <span>Send a Tip 💰</span>
+    </a>
+  </div>
+
+  <footer>© 2025 missile_mgr | All rights reserved</footer>
+
+  
+
+</body>
+</html>
+
+
